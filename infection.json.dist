@@ -12,7 +12,8 @@
         "summary": "report/logs/infection-summary.log"
     },
     "mutators": {
-        "@default": true
+        "@default": true,
+        "MatchArmRemoval": false
     },
     "phpUnit": {
         "configDir": "",
