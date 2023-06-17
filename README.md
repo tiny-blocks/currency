@@ -32,14 +32,16 @@ get the default amount fraction digits for the respective currency.
 ```php
 $currency = Currency::USD;
 
-echo $currency->name;                       # USD
-echo $currency->value;                      # USD
-echo $currency->getDefaultFractionDigits(); # 2
+$currency->name;                       # USD
+$currency->value;                      # USD
+$currency->getDefaultFractionDigits(); # 2
 ```
+
+<div id='license'></div>
 
 ## License
 
-Math is licensed under [MIT](/LICENSE).
+Currency is licensed under [MIT](LICENSE).
 
 <div id='contributing'></div>
 
