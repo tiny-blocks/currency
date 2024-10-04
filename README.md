@@ -32,9 +32,9 @@ get the default amount fraction digits for the respective currency.
 ```php
 $currency = Currency::USD;
 
-$currency->name;                       # USD
-$currency->value;                      # USD
-$currency->getDefaultFractionDigits(); # 2
+$currency->name;                # USD
+$currency->value;               # USD
+$currency->getFractionDigits(); # 2
 ```
 
 <div id='license'></div>

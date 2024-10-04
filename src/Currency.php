@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TinyBlocks\Currency;
 
 /**
@@ -180,17 +182,22 @@ enum Currency: string
     case ZMW = 'ZMW';
     case ZWL = 'ZWL';
 
-    public function getDefaultFractionDigits(): int
+    private const FRACTION_DIGITS_TWO = 2;
+    private const FRACTION_DIGITS_ZERO = 0;
+    private const FRACTION_DIGITS_FOUR = 4;
+    private const FRACTION_DIGITS_THREE = 3;
+
+    public function getFractionDigits(): int
     {
         return match ($this) {
             Currency::BIF, Currency::CLP, Currency::DJF, Currency::GNF, Currency::ISK,
             Currency::JPY, Currency::KMF, Currency::KRW, Currency::PYG, Currency::RWF,
             Currency::UGX, Currency::UYI, Currency::VND, Currency::VUV, Currency::XAF,
-            Currency::XOF, Currency::XPF  => 0,
+            Currency::XOF, Currency::XPF  => self::FRACTION_DIGITS_ZERO,
             Currency::BHD, Currency::IQD, Currency::JOD, Currency::KWD, Currency::LYD,
-            Currency::OMR, Currency::TND  => 3,
-            Currency::CLF, Currency::UYW, => 4,
-            default                       => 2
+            Currency::OMR, Currency::TND  => self::FRACTION_DIGITS_THREE,
+            Currency::CLF, Currency::UYW, => self::FRACTION_DIGITS_FOUR,
+            default                       => self::FRACTION_DIGITS_TWO
         };
     }
 }
