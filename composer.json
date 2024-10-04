@@ -9,8 +9,6 @@
     "keywords": [
         "vo",
         "psr",
-        "psr-4",
-        "psr-12",
         "currency",
         "iso-4217",
         "tiny-blocks",
@@ -22,6 +20,10 @@
             "homepage": "https://github.com/gustavofreze"
         }
     ],
+    "support": {
+        "issues": "https://github.com/tiny-blocks/currency/issues",
+        "source": "https://github.com/tiny-blocks/currency"
+    },
     "config": {
         "sort-packages": true,
         "allow-plugins": {
@@ -39,24 +41,27 @@
         }
     },
     "require": {
-        "php": "^8.1||^8.2"
+        "php": "^8.2"
     },
     "require-dev": {
-        "infection/infection": "^0.26",
-        "phpmd/phpmd": "^2.13",
-        "phpunit/phpunit": "^9.6",
-        "squizlabs/php_codesniffer": "^3.7"
+        "phpmd/phpmd": "^2.15",
+        "phpunit/phpunit": "^11",
+        "phpstan/phpstan": "^1",
+        "infection/infection": "^0.29",
+        "squizlabs/php_codesniffer": "^3.10"
     },
     "scripts": {
         "phpcs": "phpcs --standard=PSR12 --extensions=php ./src",
         "phpmd": "phpmd ./src text phpmd.xml --suffixes php --exclude /src/Currency.php --ignore-violations-on-exit",
+        "phpstan": "phpstan analyse -c phpstan.neon.dist --quiet --no-progress",
         "test": "phpunit --log-junit=report/coverage/junit.xml --coverage-xml=report/coverage/coverage-xml --coverage-html=report/coverage/coverage-html tests",
         "test-mutation": "infection --only-covered --logger-html=report/coverage/mutation-report.html --coverage=report/coverage --min-msi=100 --min-covered-msi=100 --threads=4",
         "test-no-coverage": "phpunit --no-coverage",
         "test-mutation-no-coverage": "infection --only-covered --min-msi=100 --threads=4",
         "review": [
             "@phpcs",
-            "@phpmd"
+            "@phpmd",
+            "@phpstan"
         ],
         "tests": [
             "@test",
