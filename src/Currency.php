@@ -182,11 +182,16 @@ enum Currency: string
     case ZMW = 'ZMW';
     case ZWL = 'ZWL';
 
-    private const FRACTION_DIGITS_TWO = 2;
-    private const FRACTION_DIGITS_ZERO = 0;
-    private const FRACTION_DIGITS_FOUR = 4;
-    private const FRACTION_DIGITS_THREE = 3;
+    private const int FRACTION_DIGITS_TWO = 2;
+    private const int FRACTION_DIGITS_ZERO = 0;
+    private const int FRACTION_DIGITS_FOUR = 4;
+    private const int FRACTION_DIGITS_THREE = 3;
 
+    /**
+     * Returns the number of decimal places for the current currency.
+     *
+     * @return int The number of decimal places.
+     */
     public function getFractionDigits(): int
     {
         return match ($this) {
