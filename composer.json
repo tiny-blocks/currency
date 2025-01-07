@@ -56,6 +56,7 @@
         "phpcs": "phpcs --standard=PSR12 --extensions=php ./src",
         "phpmd": "phpmd ./src text phpmd.xml --suffixes php --ignore-violations-on-exit",
         "phpstan": "phpstan analyse -c phpstan.neon.dist --quiet --no-progress",
+        "test-file": "phpunit --configuration phpunit.xml --no-coverage --filter",
         "mutation-test": "infection --only-covered --threads=max --logger-html=report/coverage/mutation-report.html --coverage=report/coverage",
         "test-no-coverage": "phpunit --configuration phpunit.xml --no-coverage tests",
         "review": [
