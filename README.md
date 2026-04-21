@@ -12,7 +12,10 @@
 
 ## Overview
 
-Value Object representing a currency using [ISO-4217]( https://www.iso.org/iso-4217-currency-codes.html) specifications.
+Models [ISO-4217](https://www.iso.org/iso-4217-currency-codes.html) currencies as a PHP enum, covering all standard
+currency codes with their correct number of fraction digits. Resolves edge cases such as zero-decimal currencies (JPY,
+KRW), three-decimal currencies (BHD, KWD), and four-decimal currencies (CLF, UYW). Backed by a native PHP enum for
+zero-overhead comparison and type safety.
 
 <div id='installation'></div>
 

@@ -3,5 +3,4 @@ parameters:
     - src
   level: 9
   tmpDir: report/phpstan
-  ignoreErrors:
   reportUnmatchedIgnoredErrors: false

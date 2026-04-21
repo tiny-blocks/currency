@@ -22,7 +22,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
-          extensions: bcmath
           tools: composer:2
 
       - name: Validate composer.json
@@ -32,7 +31,7 @@ jobs:
         run: composer install --no-progress --optimize-autoloader --prefer-dist --no-interaction
 
       - name: Upload vendor and composer.lock as artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: vendor-artifact
           path: |
@@ -52,11 +51,10 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
-          extensions: bcmath
           tools: composer:2
 
       - name: Download vendor artifact from build
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: vendor-artifact
           path: .
@@ -77,11 +75,10 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ env.PHP_VERSION }}
-          extensions: bcmath
           tools: composer:2
 
       - name: Download vendor artifact from build
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v8
         with:
           name: vendor-artifact
           path: .
