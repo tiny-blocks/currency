@@ -5,9 +5,10 @@ declare(strict_types=1);
 namespace TinyBlocks\Currency;
 
 /**
- * This standard establishes internationally recognized codes for the representation of currencies that enable clarity
- * and reduce errors.
- * Currencies are represented both numerically and alphabetically, using either three digits or three letters.
+ * ISO-4217 currency code with its standard number of fraction digits.
+ *
+ * <p>Each case is the three-letter alphabetic code defined in ISO-4217. The matching number of
+ * fraction digits used in monetary amounts is exposed via {@see Currency::getFractionDigits()}.</p>
  *
  * @see https://www.iso.org/iso-4217-currency-codes.html
  */
@@ -183,14 +184,14 @@ enum Currency: string
     case ZWL = 'ZWL';
 
     private const int FRACTION_DIGITS_TWO = 2;
-    private const int FRACTION_DIGITS_ZERO = 0;
     private const int FRACTION_DIGITS_FOUR = 4;
+    private const int FRACTION_DIGITS_ZERO = 0;
     private const int FRACTION_DIGITS_THREE = 3;
 
     /**
-     * Returns the number of decimal places for the current currency.
+     * Returns the number of fraction digits for the currency.
      *
-     * @return int The number of decimal places.
+     * @return int The number of fraction digits.
      */
     public function getFractionDigits(): int
     {
@@ -198,11 +199,11 @@ enum Currency: string
             Currency::BIF, Currency::CLP, Currency::DJF, Currency::GNF, Currency::ISK,
             Currency::JPY, Currency::KMF, Currency::KRW, Currency::PYG, Currency::RWF,
             Currency::UGX, Currency::UYI, Currency::VND, Currency::VUV, Currency::XAF,
-            Currency::XOF, Currency::XPF  => self::FRACTION_DIGITS_ZERO,
+            Currency::XOF, Currency::XPF => self::FRACTION_DIGITS_ZERO,
             Currency::BHD, Currency::IQD, Currency::JOD, Currency::KWD, Currency::LYD,
-            Currency::OMR, Currency::TND  => self::FRACTION_DIGITS_THREE,
-            Currency::CLF, Currency::UYW, => self::FRACTION_DIGITS_FOUR,
-            default                       => self::FRACTION_DIGITS_TWO
+            Currency::OMR, Currency::TND => self::FRACTION_DIGITS_THREE,
+            Currency::CLF, Currency::UYW => self::FRACTION_DIGITS_FOUR,
+            default                      => self::FRACTION_DIGITS_TWO
         };
     }
 }

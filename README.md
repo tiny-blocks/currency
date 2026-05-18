@@ -1,14 +1,12 @@
 # Currency
 
-[![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-green)](https://github.com/tiny-blocks/currency/blob/main/LICENSE)
 
 * [Overview](#overview)
 * [Installation](#installation)
 * [How to use](#how-to-use)
 * [License](#license)
 * [Contributing](#contributing)
-
-<div id='overview'></div> 
 
 ## Overview
 
@@ -17,22 +15,24 @@ currency codes with their correct number of fraction digits. Resolves edge cases
 KRW), three-decimal currencies (BHD, KWD), and four-decimal currencies (CLF, UYW). Backed by a native PHP enum for
 zero-overhead comparison and type safety.
 
-<div id='installation'></div>
-
 ## Installation
 
 ```bash
 composer require tiny-blocks/currency
 ```
 
-<div id='how-to-use'></div>
-
 ## How to use
 
-The library exposes a concrete implementation through the `Currency` enum. Besides, the alphabetic code, you can
-get the default amount fraction digits for the respective currency.
+The library exposes the `Currency` enum. In addition to the alphabetic code, the matching number of fraction digits is
+available for the respective currency.
 
 ```php
+<?php
+
+declare(strict_types=1);
+
+use TinyBlocks\Currency\Currency;
+
 $currency = Currency::USD;
 
 $currency->name;                # USD
@@ -40,13 +40,9 @@ $currency->value;               # USD
 $currency->getFractionDigits(); # 2
 ```
 
-<div id='license'></div>
-
 ## License
 
 Currency is licensed under [MIT](LICENSE).
-
-<div id='contributing'></div>
 
 ## Contributing
 

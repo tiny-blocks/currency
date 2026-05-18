@@ -3,6 +3,13 @@
     "description": "Models ISO-4217 currencies as a PHP enum, with per-currency fraction digit resolution.",
     "license": "MIT",
     "type": "library",
+    "keywords": [
+        "enum",
+        "currency",
+        "iso-4217",
+        "tiny-blocks",
+        "value-object"
+    ],
     "authors": [
         {
             "name": "Gustavo Freze de Araujo Santos",
@@ -18,8 +25,8 @@
         "php": "^8.5"
     },
     "require-dev": {
-        "ergebnis/composer-normalize": "^2.51",
-        "infection/infection": "^0.32",
+        "ergebnis/composer-normalize": "^2.52",
+        "infection/infection": "^0.33",
         "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^13.1",
         "squizlabs/php_codesniffer": "^4.0"
@@ -44,22 +51,22 @@
         "sort-packages": true
     },
     "scripts": {
-        "mutation-test": "php ./vendor/bin/infection --threads=max --logger-html=report/coverage/mutation-report.html --coverage=report/coverage",
-        "phpcs": "php ./vendor/bin/phpcs --standard=PSR12 --extensions=php ./src",
-        "phpstan": "php ./vendor/bin/phpstan analyse -c phpstan.neon.dist --quiet --no-progress",
+        "configure": [
+            "@composer install --optimize-autoloader",
+            "@composer normalize"
+        ],
+        "configure-and-update": [
+            "@composer update --optimize-autoloader",
+            "@composer normalize"
+        ],
         "review": [
-            "@phpcs",
-            "@phpstan"
+            "@php ./vendor/bin/phpcs --standard=phpcs.xml --extensions=php ./src ./tests",
+            "@php ./vendor/bin/phpstan analyse -c phpstan.neon.dist --quiet --no-progress"
         ],
-        "test": "php -d memory_limit=2G ./vendor/bin/phpunit --configuration phpunit.xml tests",
-        "test-file": "php ./vendor/bin/phpunit --configuration phpunit.xml --no-coverage --filter",
-        "test-no-coverage": "php ./vendor/bin/phpunit --configuration phpunit.xml --no-coverage tests",
+        "test-file": "@php ./vendor/bin/phpunit --configuration phpunit.xml --no-coverage --filter",
         "tests": [
-            "@test",
-            "@mutation-test"
-        ],
-        "tests-no-coverage": [
-            "@test-no-coverage"
+            "@php -d memory_limit=2G ./vendor/bin/phpunit --configuration phpunit.xml tests",
+            "@php ./vendor/bin/infection --threads=max --logger-html=reports/coverage/mutation-report.html --coverage=reports/coverage"
         ]
     }
 }

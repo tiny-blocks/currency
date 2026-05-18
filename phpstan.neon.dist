@@ -1,6 +1,10 @@
 parameters:
-  paths:
-    - src
-  level: 9
-  tmpDir: report/phpstan
-  reportUnmatchedIgnoredErrors: false
+    level: max
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+        # Data-provider methods inside tests/ may not document iterable value types per testing rules.
+        - identifier: missingType.iterableValue
+          path: tests/CurrencyTest.php
+    reportUnmatchedIgnoredErrors: true

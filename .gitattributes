@@ -2,7 +2,7 @@
 
 *.php text diff=php
 
-# Dev-only — excluded from the Packagist tarball
+# Dev-only, excluded from the Packagist tarball
 /.github             export-ignore
 /tests               export-ignore
 /.claude             export-ignore
@@ -20,3 +20,5 @@
 /Makefile            export-ignore
 /CONTRIBUTING.md     export-ignore
 /CHANGES.md          export-ignore
+/reports             export-ignore
+/.phpunit.cache      export-ignore
