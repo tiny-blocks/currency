@@ -9,21 +9,6 @@ use PHPUnit\Framework\TestCase;
 
 final class CurrencyTest extends TestCase
 {
-    #[DataProvider('currenciesDataProvider')]
-    public function testValidNameAndValue(string $name, string $value): void
-    {
-        self::assertSame(3, strlen($name));
-        self::assertSame(3, strlen($value));
-    }
-
-    #[DataProvider('fractionDigitsDataProvider')]
-    public function testGetFractionDigits(int $expected, Currency $currency): void
-    {
-        $actual = $currency->getFractionDigits();
-
-        self::assertSame($expected, $actual);
-    }
-
     public static function currenciesDataProvider(): array
     {
         return array_map(static fn(Currency $currency): array => [
@@ -64,5 +49,33 @@ final class CurrencyTest extends TestCase
             'Currency CLF with digits 4' => ['currency' => Currency::CLF, 'expected' => 4],
             'Currency UYW with digits 4' => ['currency' => Currency::UYW, 'expected' => 4]
         ];
+    }
+
+    #[DataProvider('currenciesDataProvider')]
+    public function testCurrencyCodeWhenAccessedThenNameAndValueAreThreeCharactersLong(
+        string $name,
+        string $value
+    ): void {
+        /** @Given a currency case from the data provider */
+
+        /** @When inspecting the lengths of the name and the value */
+
+        /** @Then both are exactly three characters long */
+        self::assertSame(3, strlen($name));
+        self::assertSame(3, strlen($value));
+    }
+
+    #[DataProvider('fractionDigitsDataProvider')]
+    public function testFractionDigitsWhenCurrencyIsAccessedThenReturnsExpectedNumber(
+        int $expected,
+        Currency $currency
+    ): void {
+        /** @Given a currency with a known number of fraction digits */
+
+        /** @When asking for the number of fraction digits */
+        $actual = $currency->getFractionDigits();
+
+        /** @Then the returned number matches the expected one */
+        self::assertSame($expected, $actual);
     }
 }
