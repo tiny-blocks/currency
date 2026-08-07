@@ -14,6 +14,11 @@ namespace TinyBlocks\Currency;
  */
 enum Currency: string
 {
+    private const int FRACTION_DIGITS_TWO = 2;
+    private const int FRACTION_DIGITS_FOUR = 4;
+    private const int FRACTION_DIGITS_ZERO = 0;
+    private const int FRACTION_DIGITS_THREE = 3;
+
     case AED = 'AED';
     case AFN = 'AFN';
     case ALL = 'ALL';
@@ -182,11 +187,6 @@ enum Currency: string
     case ZAR = 'ZAR';
     case ZMW = 'ZMW';
     case ZWL = 'ZWL';
-
-    private const int FRACTION_DIGITS_TWO = 2;
-    private const int FRACTION_DIGITS_FOUR = 4;
-    private const int FRACTION_DIGITS_ZERO = 0;
-    private const int FRACTION_DIGITS_THREE = 3;
 
     /**
      * Returns the number of fraction digits for the currency.
