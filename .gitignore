@@ -2,11 +2,15 @@
 /vendor/
 composer.lock
 
+# Local config overrides (committed baselines are the .dist files)
+/phpstan.neon
+/infection.json
+
 # Tooling cache
-.phpcs-cache
 .phpunit.cache/
-.php-cs-fixer.cache
 .phpunit.result.cache
+__pycache__/
+*.pyc
 
 # Coverage and reports
 build/
@@ -18,6 +22,7 @@ infection.log
 .idea/
 .cursor/
 .vscode/
+/.claude/settings.local.json
 
 # OS
 Thumbs.db
