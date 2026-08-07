@@ -6,7 +6,9 @@ ifeq ($(ARCH),arm64)
     PLATFORM := --platform=linux/amd64
 endif
 
-DOCKER_RUN = docker run ${PLATFORM} --rm -it --net=host -v ${PWD}:/app -w /app gustavofreze/php:8.5-alpine
+TTY := $(shell [ -t 0 ] && echo -it)
+
+DOCKER_RUN = docker run ${PLATFORM} --rm ${TTY} --net=host -v ${PWD}:/app -w /app gustavofreze/php:8.5-alpine
 
 RESET := \033[0m
 GREEN := \033[0;32m
