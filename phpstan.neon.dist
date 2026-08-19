@@ -3,6 +3,7 @@ parameters:
     paths:
         - src
         - tests
+    tmpDir: reports/phpstan
     ignoreErrors:
         # Data-provider methods inside tests/ may not document iterable value types per testing rules.
         - identifier: missingType.iterableValue
